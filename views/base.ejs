@@ -1,0 +1,25 @@
+<!--views/base.ejs-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title><%= data.siteTitle %> | <%= data.pageTitle %></title>
+        <link href="/images/siteLogo.png" rel="icon" />
+        <link href="/fonts/setup.css" rel="stylesheet">
+        <link href="/styles/base.css" rel="stylesheet">
+        <script src="/scripts/jquery.js"></script>
+    </head>
+    <body>    
+        <% if(data.route === '/admin/login'){ %>
+            <link href="/styles/base-backend.css" rel="stylesheet">
+            <%- include('./backend/login.ejs') %>
+        <% } else if(data.route.includes('/admin/')){ %>
+            <link href="/styles/base-backend.css" rel="stylesheet">
+            <%- include('./backend/index.ejs') %>
+        <% } else if(data.route.includes('/')){ %>
+            <link href="/styles/base.css" rel="stylesheet">
+            <%- include('./frontend/index.ejs') %>
+        <% } %>
+    </body>
+</html>

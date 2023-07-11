@@ -1,0 +1,32 @@
+<!--views/frontend/user.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/user.css" />
+
+<section class="User">
+    <div class="main">
+        <div class="content">
+        <% if(data.item){ %>
+            <div class="title"><%= data.item.title %></div>
+            <div class="role">
+                <%= data.item.role %>
+            </div>
+            <div class="date">
+                <%= new Date(data.item.date).toLocaleDateString("it-IT") %>
+            </div>
+            
+            <div class="text-content">
+                <%- data.item.content %>
+            </div>
+            <script>
+                var idcomments_acct = '66bacfe3b1e6130f4442629d4dd3ce0b';
+                var idcomments_post_id;
+                var idcomments_post_url;
+            </script>
+            <span id="IDCommentsPostTitle" style="display:none"></span>
+            <script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+            
+        <% } %>
+        </div>
+        <div class="sidebar"><%- include("./sidebar") %></div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: video-news
+    src: .
+    engine: nodejs16
+    primary: true
+    public: true
+    presets:
+      env:
+        - name: SECRET_KEY
+          description: Secret message only available to this Micro

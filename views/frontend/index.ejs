@@ -1,0 +1,96 @@
+<!--views/frontend/index.ejs-->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0&appId=3414446958683475&autoLogAppEvents=1" nonce="ow69NFqD"></script>
+<link href="/styles/frontend/index.css" rel="stylesheet">
+
+<section class="Index">
+    <header class="header">
+        <div class="top region">
+            <a class="logo" href="/">
+                <img src="/images/siteLogo.png" />
+                <span><%= data.siteTitle %></span>
+            </a>
+
+            <form class="search" method="post" action="/search">
+                <select name="search_front">
+                    <option>ព័ត៌មាន</option>
+                    <option>ភាពយន្ត</option>
+                </select>
+                <input type="text" name="q" placeholder="សរសេរ​ពាក្យ​ត្រូវ​ស្វែង​រក..." required />
+                <input type="submit" value="​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ស្វែងរក" />
+            </form>
+            <div class="login">
+                <a href="/admin/login">ចូល​ក្នុង</a> | <a>ចុះឈ្មោះ</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/styles/frontend/menu.css" />
+        <%
+        let home = ''
+        let news = ''
+        let movie = ''
+        let contact = ''
+        let about = ''
+
+        if(data.route === '/'){
+            home = 'active'
+        }else if(data.type === "News"){
+            news = 'active'
+        }else if(data.type === "Movie"){
+            movie = "active"
+        }else if(data.route === '/page/8638311039091302'){
+            contact = 'active'
+        }else if(data.route === '/page/8638311038729878'){
+            about = 'active'
+        }
+        %>
+        <div class="wrapper region">
+            <div class="topnav" id="myTopnav">
+                <a href="/" class="home <%= home %>">ទំព័រ​ដើម</a>
+                <a href="/category/News" class="home <%= news %>">ព័ត៌មាន</a>
+                <a href="/category/Movie" class="movie <%= movie %>">ភាពយន្ត</a>
+                <a href="/page/8638311039091302" class="contact <%= contact %>">ទំនាក់ទំនង</a>
+                <a href="/page/8638311038729878" class="about <%= about %>">អំពី​ពួក​យើង</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+
+    <div class="main region">
+        <% if(data.route === "/"){ %>
+            <%- include("./home") %>
+        <% }else if(data.route === "/post"){ %>
+            <%- include("./post") %>
+        <%} else if(data.route.includes("/page")){ %>
+            <%- include("./page") %>
+        <% }else if(data.route === "/user"){ %>
+            <%- include("./user") %>
+        <% }else if(data.route === "/category"){ %>
+            <%- include("./category") -%>
+        <% }else if(data.route === "/search"){ %>
+            <%- include("./search") %>
+        <% } %>   
+    </div>
+
+    <footer class="footer region">
+        <a href="https://apsara_template-1-t8027376.deta.app/">
+            &copy; 2023 Apsara Templates
+        </a>
+    </footer>
+</section>

@@ -1,0 +1,24 @@
+/* public/styles/backend/category.css */
+
+.content form{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-gap: 5px;
+    align-items: center;
+}
+ 
+.content form input{
+    
+}
+ 
+.content form input[type=submit],
+.content form input{
+    font: var(--body-font);
+    padding: 5px 10px;
+}
+ 
+.content form a{
+    text-align: right;
+    color: black;
+}

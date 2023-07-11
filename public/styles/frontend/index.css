@@ -1,0 +1,72 @@
+/* public/styles/frontend/index.css */
+
+.Index .header{
+    background-color: var(--background-dark);
+    padding: 15px 0;
+}
+
+.Index .header .top{
+    display: grid;
+    grid-template-columns: 35% auto 20%;
+    align-items: center;
+}
+
+.Index .header .top .logo{
+    display: grid;
+    grid-template-columns: 15% auto;
+    align-items: center;
+    grid-gap: 10px;
+}
+
+.Index .header .top .logo img{
+    width: 100%;
+}
+
+.Index .header .top .logo span{
+    font: 40px/1.5 BlackOpsOne, Limonf3;
+    color: silver;
+}
+
+.Index .header .top form{
+    display: grid;
+    grid-template-columns: 20% auto 15%;
+}
+
+.Index .header .top form input,
+.Index .header .top form select{
+    font: var(--body-font);
+    padding: 2px 10px;
+}
+
+.Index .header .top .login{
+    text-align: right;
+}
+
+.Index .header .top .login a{
+    color: silver;
+}
+
+.Index footer{
+    text-align: center;
+    padding: 50px 0;
+}
+
+@media only screen and (max-width: 600px){
+    .Index .header .top{
+        grid-template-columns: 100%;
+    }
+
+    .Index .header .top .logo{
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .Index .header .top .logo img{
+        width: 70px;
+        margin: 0 auto
+    }
+
+    .Index .header .top .login{
+        text-align: center;
+    }
+}

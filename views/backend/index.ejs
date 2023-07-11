@@ -1,0 +1,109 @@
+<!--views/backend/index.ejs-->
+
+<link href="/styles/backend/index.css" rel="stylesheet">
+<script src="/scripts/backend/paginate.js"></script>
+ 
+<section class="Header">
+    <div class="wrapper region">
+        <div class="logo"><%= data.pageTitle %></div>
+        <form method="post" action="/admin/search">
+            <select name="search_type">
+                <option>ការផ្សាយ</option>
+                <option>ជំពូក</option>
+                <option>ទំព័រស្តាទិក</option>
+                <option>អ្នក​ប្រើប្រាស់</option>
+            </select>
+            <input type="text" name="q" placeholder="Search" required>
+            <input type="submit" value="ស្វែង​រក">
+        </form>
+        <div class="logout">
+        <a><%= data.userName %></a> | <a href="/">ទំព័រ​មុខ</a> | <a href="/admin/login/logout">ចេញ​ក្រៅ</a>
+        </div>
+    </div>
+</section>
+ 
+<section class="Body">
+    <div class="wrapper region">
+        <div class="sidebar-wrapper">
+        <div class="sidebar">
+            <a href='/admin/post'><img src='/images/movie.png' /></a>
+            <a href='/admin/post'>ការផ្សាយ</a>
+            
+            <a href='/admin/category'><img src='/images/category.png' /></a>
+            <a href='/admin/category'>ជំពូក</a>
+            
+            <a href='/admin/page'><img src='/images/page.png' /></a>
+            <a href='/admin/page'>ទំព័ររឹង</a>
+            
+            <a href='/admin/upload'><img src='/images/upload.png' /></a>
+            <a href='/admin/upload'>Upload</a>
+            
+            <a href='/admin/user'><img src='/images/users.png' /></a>
+            <a href='/admin/user'>អ្នក​ប្រើប្រាស់</a>
+            
+            <a href='/admin/setting'><img src='/images/setting.png' /></a>
+            <a href='/admin/setting'>Setting</a>
+        </div>
+        </div>
+        
+        <% if(data.route == "/admin/post"){ %>
+            <%- include('./post.ejs') %>
+        <% }else if(data.route == "/admin/category"){ %>
+            <%- include('./category.ejs') %>
+        <% }else if(data.route == "/admin/page"){ %>
+            <%- include('./page.ejs') %>
+        <% }else if(data.route == "/admin/upload"){ %>
+            <%- include('./upload.ejs') %>
+        <% }else if(data.route == "/admin/user"){ %>
+            <%- include('./user.ejs') %>
+        <% }else if(data.route == "/admin/setting"){ %>
+            <%- include('./setting.ejs') %>
+        <% }else if(data.route == "/admin/search"){ %>
+            <%- include('./search.ejs') %>
+        <% } %>
+
+    </div>
+</section>
+
+<section class="Footer Listing region">
+    <div class="info">ការផ្សាយ​ចុង​ក្រោយ</div>
+
+    <ul class="list">
+        <% if('items' in data){ %>
+            <% for(let item of data.items) { %>
+            <li>
+                <div class='thumb'>
+                    <a href='/<%= data.type %>/<%= item.key %>'>
+                        <img src='<%= item.thumb %>'/>
+                    <% if(item.videos){ %>
+                        <% if((item.videos !== "") && (item.videos !== "[]")){ %>
+                            <img class="play-icon" src="/images/play.png"/>
+                        <% } %>
+                    <% } %>
+                    </a>
+                </div>
+                <div class="title">
+                    <a href="/<%= data.type %>/<%= item.key %>"><%= item.title %></a>
+                    <div><%= (new Date(item.date)).toLocaleDateString('it-IT') %></div>
+                </div>
+                <div class="edit">
+                    <a href="<%= data.route %>/edit/<%= item.key %>"><img src="/images/edit.png"/></a>
+                    <a href="<%= data.route %>/delete/<%= item.key %>"><img src="/images/delete.png"/></a>
+                </div> 
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
+
+    <% if(data.route === '/admin/user'){ %>
+        <script>
+        $('.Footer ul li').css({'grid-template-columns':'13% auto 25%'})
+        $('.Footer ul li .thumb').css({'padding-top':'100%'})
+        $('.Footer ul li .thumb img').css({'border-radius':'50%'})
+        </script>
+    <% } %>
+
+    <div class="paginate">
+        <img onclick="paginate('<%= data.route %>','<%= data.lastKey %>')" src='/images/load-more.png' />
+    </div>
+</section>

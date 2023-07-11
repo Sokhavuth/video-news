@@ -1,0 +1,69 @@
+<!--views/frontend/post.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/post.css" />
+<script src="/scripts/setplayer.js"></script>
+
+<section class="Post">
+    <div class="main">
+        <div class="content">
+        <% if(data.item){ %>
+            <div class="title"><%= data.item.title %></div>
+            <div class="category">
+                <%= data.item.categories.toString() %>
+                <div class="fb-share-button" data-href="https://video_news-1-h4475693.deta.app/post/<%= data.item.key %>" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkhmerweb-apsara-book.deta.dev%2Fbook%2F<%= data.item.key %>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="date">
+                <%= new Date(data.item.date).toLocaleDateString("it-IT") %>
+            </div>
+            <div class="post-ad">
+                <img src="/images/donate-ad.jpg" />
+            </div>
+            <% if(data.item.videos){ %>
+            <% if((data.item.videos !== '')&&(data.item.videos !== '[]')){ %>
+                <div class="video">
+                    <div class="screen"></div>
+                    <div class="playlist"></div>
+                </div>
+                <script>
+                    const videos = JSON.parse('<%- data.item.videos %>')
+                    videos.reverse()
+                    
+                    let clicked = 0
+                    
+                    for(let index in videos){
+                        let ending = ''
+                        if(index == videos.length-1){
+                            ending = videos[index].status
+                        }
+
+                        let title = videos[index].title
+                        
+                        let result = '<div id="part'+index+'" class="part" onClick="setScreen(videos['+index+'],'+index+',true)">videoTitle ភាគ '+(++index)+' '+ending+'</div>'
+                        let html = result.replace("videoTitle", "<%= data.item.title %>")
+                        $('.playlist').append(html)
+                    }
+
+                    setScreen(videos[0],0,false)
+                </script>
+            <% } %>
+            <% } %>
+            <div class="text-content">
+                <%- data.item.content %>
+            </div>
+            <div class="post-ad">
+                <img src="/images/front-ad.png" />
+            </div>
+            <script>
+                var idcomments_acct = '66bacfe3b1e6130f4442629d4dd3ce0b';
+                var idcomments_post_id;
+                var idcomments_post_url;
+            </script>
+            <span id="IDCommentsPostTitle" style="display:none"></span>
+            <script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+                
+        <% } %>
+        </div>
+        <div class="sidebar"><%- include("./sidebar") %></div>
+    </div>
+</section>

@@ -1,0 +1,14 @@
+<!--views/backend/login.ejs-->
+ 
+<link href="/styles/backend/login.css" rel="stylesheet"></link>
+  
+<section class='Login'>
+    <div class='title'>ចុះ​ឈ្មោះ​ចូល​ទំព័រ​គ្រប់គ្រង</div>
+ 
+    <form action='/admin/login' method='post' >
+        <a>Email:</a><input type='email' value="guest@khmerweb.app" name='email' required />
+        <a>ពាក្យ​សំងាត់ៈ</a><input type='password' value="password" name='password' required />
+        <a></a><input type='submit' value='បញ្ជូន' />
+        <a></a><div class='info'><%= data.message %></div>
+    </form>
+</section>

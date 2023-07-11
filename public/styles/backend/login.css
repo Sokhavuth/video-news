@@ -1,0 +1,57 @@
+/* public/styles/backend/login.css */
+ 
+.Login{
+    width: 400px;
+    margin: 100px auto;
+    background: var(--background);
+} 
+ 
+.Login .title{
+    text-align: center;
+    font: 18px/1.5 Koulen, Oswald;
+    padding: 5px;
+    border-bottom: 1px solid white;
+    color: white;
+}
+ 
+.Login form{
+    padding: 20px 20px;
+    display: grid;
+    grid-template-columns: 20% auto; 
+    grid-gap: 5px;
+    align-items: center;
+}
+ 
+.Login form a{
+    text-align: right;
+    color: white;
+}
+ 
+.Login form input{
+    padding: 0 5px;
+    font: var(--body-font);
+}
+ 
+.Login .info{
+    text-align: center;
+    
+}
+ 
+.Login form input[type=submit]{
+    font: var(--body-font);
+    padding-top: 0;
+}
+ 
+@media only screen and (max-width: 600px){
+    .Login{
+        width: 100%;
+    } 
+ 
+    .Login form{
+        grid-template-columns: 100%; 
+    }
+ 
+    .Login form a{
+        text-align: left;
+    }
+}

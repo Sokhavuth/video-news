@@ -1,0 +1,146 @@
+/* public/styles/admin/index.css */
+.Header{
+    background: var(--background-dark);
+    border-bottom: 8px solid white;
+}
+
+.Header .wrapper{
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    align-items: center;
+}
+
+.Header .wrapper .logo{
+    font: 22px/1.5 Anton, Limonf3;
+}
+
+.Header .wrapper form{
+    display: grid;
+    grid-template-columns: 20% auto 15%;
+}
+
+.Header .wrapper form input,
+.Header .wrapper form select{
+    font: var(--background-light);
+    padding: 0 5px;
+}
+
+.Header .wrapper .logout{
+    text-align: right;
+}
+
+.Body .wrapper{
+    display: grid;
+    grid-template-columns: 25% auto;
+    margin-top: 20px;
+}
+
+.Body .wrapper .sidebar-wrapper{
+    background: white;
+    margin-right: 10px;
+}
+
+.Body .wrapper .sidebar{
+    max-height: 600px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-gap: 10px;
+    align-items: center;
+    background: white;
+}
+
+.Body .wrapper .sidebar a img{
+    width: 100%;
+}
+
+.Body .wrapper .sidebar a{
+    font: 18px/1.5 Koulen, Oswald;
+    color: grey;
+}
+
+.Footer .info{
+    background: var(--item-listing);
+    color: var(--item-listing-color);
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.Footer ul{
+    display: grid;
+    grid-template-columns: calc(50% - 5px ) calc(50% - 5px );
+    grid-gap: 10px;
+}
+
+.Footer ul li{
+    display: grid;
+    grid-template-columns: 25% auto 20%;
+    align-items: center;
+    background: var(--item-listing);
+    color: var(--item-listing-color);
+}
+
+.Footer ul li .thumb{
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.Footer ul li .thumb a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.Footer ul li .thumb img{
+    width: 100%;
+}
+
+.Footer ul li .thumb .play-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25%;
+    height: auto;
+    transform: translate(-50%,-50%);
+}
+
+.Footer ul li .title{
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Footer ul li .title a{
+    color: var(--item-listing-color);
+}
+
+.Footer ul li .edit{
+    text-align: right;
+    padding-right: 10px;
+    visibility: hidden;
+}
+
+.Footer ul li:hover .edit{
+    visibility: visible;
+}
+
+.Footer ul li .edit img{
+    width: 45px;
+}
+
+.Footer .paginate{
+    text-align: center;
+    background: var(--item-listing);
+    margin: 10px 0 20px;
+    padding: 10px 0 5px;
+}
+
+.Footer .paginate img:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+<!--views/backend/upload.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/upload.css" />
+
+<section class="Upload">
+    <form action="/admin/upload" enctype="multipart/form-data" method="post">
+        <input type="file" name="file" required >
+        <% if(data.img){ %>
+        <input type="text" value="<%= data.img %>" />
+        <% delete data.img %>
+        <% } %>
+        <input type="submit" value="Upload">
+    </form> 
+</section>
